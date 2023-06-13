@@ -9,3 +9,6 @@ scipy==1.10.0
 xgboost==1.7.3
 pydantic
 uvicorn
+fastapi
+json
+pickle
