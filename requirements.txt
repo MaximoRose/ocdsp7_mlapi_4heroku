@@ -10,4 +10,3 @@ xgboost==1.7.3
 pydantic
 uvicorn
 fastapi
-pickle
