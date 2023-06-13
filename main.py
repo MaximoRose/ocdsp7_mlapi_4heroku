@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import pickle
 import json
+import complementary_functions as cf810
 
 REF_FEATURES = ['AMT_ANNUITY', 'DAYS_BIRTH', 'DAYS_EMPLOYED', 
                 'DAYS_ID_PUBLISH', 'REGION_RATING_CLIENT_W_CITY', 'HOUR_APPR_PROCESS_START',
@@ -110,3 +112,21 @@ def solvability_prediction(input_parameters : model_input):
         return 0  
     else:
         return 1
+
+
+# TODO : STUDY HOW TO RETURN JSONS RESULTS OF SHAPE FORCES FOR FEATURES
+@app.post('/get_shap_force')
+def get_shap_force(input_parameters : model_input):
+    input_list = []
+
+    input_data = input_parameters.json()
+    input_dictionary = json.loads(input_data)
+
+    for feature in REF_FEATURES : 
+        input_list.append(input_dictionary[feature])
+    
+    shap_forces = cf810.get_shap_force_xgb(df_line=input_list, loaded_model=xgb_model)
+    
+    shap_dictionary = shap_forces.to_dict(orient='records')[0]
+
+    return JSONResponse(content=shap_dictionary)
