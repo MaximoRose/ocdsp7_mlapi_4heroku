@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import pickle
 import json
 import complementary_functions as cf810
+import pandas as pd
 
 REF_FEATURES = ['AMT_ANNUITY', 'DAYS_BIRTH', 'DAYS_EMPLOYED', 
                 'DAYS_ID_PUBLISH', 'REGION_RATING_CLIENT_W_CITY', 'HOUR_APPR_PROCESS_START',
@@ -124,8 +125,11 @@ def get_shap_force(input_parameters : model_input):
 
     for feature in REF_FEATURES : 
         input_list.append(input_dictionary[feature])
+
+    # INPUT_LIST est juste une liste de valeurs 
+    df_input = pd.DataFrame(input_list, columns=REF_FEATURES)
     
-    shap_forces = cf810.get_shap_force_xgb(df_line=input_list, loaded_model=xgb_model)
+    shap_forces = cf810.get_shap_force_xgb(df_line=df_input, loaded_model=xgb_model)
     
     shap_dictionary = shap_forces.to_dict(orient='records')[0]
 
