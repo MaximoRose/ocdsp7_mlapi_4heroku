@@ -1,0 +1,52 @@
+artifact_path: XGBoost
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.6
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.2.0
+mlflow_version: 2.3.1
+model_uuid: 5dd1653360dc40cbb3502b1790811cdc
+run_id: 188275be980b4b8c82916f2352755dae
+signature:
+  inputs: '[{"name": "AMT_ANNUITY", "type": "float"}, {"name": "DAYS_BIRTH", "type":
+    "float"}, {"name": "DAYS_EMPLOYED", "type": "float"}, {"name": "DAYS_ID_PUBLISH",
+    "type": "float"}, {"name": "REGION_RATING_CLIENT_W_CITY", "type": "float"}, {"name":
+    "HOUR_APPR_PROCESS_START", "type": "float"}, {"name": "EXT_SOURCE_1", "type":
+    "float"}, {"name": "EXT_SOURCE_2", "type": "float"}, {"name": "EXT_SOURCE_3",
+    "type": "float"}, {"name": "CREDIT_TO_ANNUITY_RATIO", "type": "float"}, {"name":
+    "CREDIT_TO_GOODS_RATIO", "type": "float"}, {"name": "ANNUITY_TO_INCOME_RATIO",
+    "type": "float"}, {"name": "INCOME_TO_EMPLOYED_RATIO", "type": "float"}, {"name":
+    "INCOME_TO_BIRTH_RATIO", "type": "float"}, {"name": "NAME_EDUCATION_TYPE_CATed",
+    "type": "float"}, {"name": "BURO_DAYS_CREDIT_MEAN", "type": "float"}, {"name":
+    "BURO_CREDIT_ENDDATE_MAX", "type": "float"}, {"name": "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN",
+    "type": "float"}, {"name": "BURO_AMT_CREDIT_SUM_LIMIT_MEAN", "type": "float"},
+    {"name": "BURO_DEBT_PERCENTAGE_MEAN", "type": "float"}, {"name": "BURO_HAS_CREDIT_SUM",
+    "type": "float"}, {"name": "BURO_HAS_CLOSED_SUM", "type": "float"}, {"name": "BURO_HAS_DELAYED_BADDEBT_MEAN",
+    "type": "float"}, {"name": "PREV_CREDIT_TO_ANNUITY_RATIO_MEAN", "type": "float"},
+    {"name": "PREV_SIMPLE_INTERESTS_MEAN", "type": "float"}, {"name": "PREV_DOWN_PAYMENT_TO_CREDIT_MEAN",
+    "type": "float"}, {"name": "PREV_DAYS_LAST_DUE_DIFF_MEAN", "type": "float"}, {"name":
+    "PREV_YIELD_GROUP_HIGH_SUM", "type": "float"}, {"name": "PREV_HAS_REFUSED_SUM",
+    "type": "float"}, {"name": "PREV_HAD_LATE_PAYMENTS_MEAN", "type": "float"}, {"name":
+    "ACTIVE_REMAINING_DEBT_SUM", "type": "float"}, {"name": "ACTIVE_AMT_INSTALMENT_SUM",
+    "type": "float"}, {"name": "REFUSED_APP_CREDIT_PERC_MEAN", "type": "float"}, {"name":
+    "APPROVED_AMT_DOWN_PAYMENT_SUM", "type": "float"}, {"name": "REFUSED_DAYS_DECISION_MEAN",
+    "type": "float"}, {"name": "POS_SK_DPD_MEAN", "type": "float"}, {"name": "POS_SK_DPD_DEF_MEAN",
+    "type": "float"}, {"name": "POS_COUNT", "type": "float"}, {"name": "INSTAL_DPD_MEAN",
+    "type": "float"}, {"name": "INSTAL_DBD_MEAN", "type": "float"}, {"name": "INSTAL_PAYMENT_PERC_MEAN",
+    "type": "float"}, {"name": "INSTAL_PAYMENT_DIFF_MEAN", "type": "float"}, {"name":
+    "INSTAL_AMT_PAYMENT_MEAN", "type": "float"}, {"name": "INSTAL_DAYS_ENTRY_PAYMENT_MEAN",
+    "type": "float"}, {"name": "INSTAL_COUNT", "type": "float"}, {"name": "CC_MONTHS_BALANCE_MEAN",
+    "type": "float"}, {"name": "CC_AMT_BALANCE_MEAN", "type": "float"}, {"name": "CC_CNT_DRAWINGS_CURRENT_MEAN",
+    "type": "float"}, {"name": "CC_LIMIT_USE_MEAN", "type": "float"}, {"name": "CC_LATE_PAYMENT_MEAN",
+    "type": "float"}, {"name": "CC_DRAWING_LIMIT_RATIO_MEAN", "type": "float"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+utc_time_created: '2023-06-07 13:52:10.372844'
