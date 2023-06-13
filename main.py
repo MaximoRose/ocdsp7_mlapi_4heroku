@@ -127,7 +127,7 @@ def get_shap_force(input_parameters : model_input):
         input_list.append(input_dictionary[feature])
 
     # INPUT_LIST est juste une liste de valeurs 
-    df_input = pd.DataFrame(input_list, columns=REF_FEATURES)
+    df_input = pd.DataFrame([input_list], columns=REF_FEATURES)
     
     shap_forces = cf810.get_shap_force_xgb(df_line=df_input, loaded_model=xgb_model)
     
