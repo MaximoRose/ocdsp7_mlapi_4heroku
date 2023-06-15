@@ -7,9 +7,9 @@ import json
 import complementary_functions as cf810
 import pandas as pd
 
-REF_FEATURES = ['AMT_ANNUITY', 'DAYS_BIRTH', 'DAYS_EMPLOYED', 
+REF_FEATURES = ['AMT_ANNUITY', 'DAYS_EMPLOYED', 
                 'DAYS_ID_PUBLISH', 'REGION_RATING_CLIENT_W_CITY', 'HOUR_APPR_PROCESS_START',
-                'EXT_SOURCE_1', 'EXT_SOURCE_2', 'EXT_SOURCE_3',
+                'AGE_RANGE',
                 'CREDIT_TO_ANNUITY_RATIO', 'CREDIT_TO_GOODS_RATIO', 'ANNUITY_TO_INCOME_RATIO',
                 'INCOME_TO_EMPLOYED_RATIO', 'INCOME_TO_BIRTH_RATIO', 'NAME_EDUCATION_TYPE_CATed',
                 'BURO_DAYS_CREDIT_MEAN', 'BURO_CREDIT_ENDDATE_MAX', 'BURO_AMT_CREDIT_MAX_OVERDUE_MEAN',
@@ -41,14 +41,11 @@ app.add_middleware(
 class model_input(BaseModel):
     
     AMT_ANNUITY : float
-    DAYS_BIRTH : float
     DAYS_EMPLOYED : float
     DAYS_ID_PUBLISH : float
     REGION_RATING_CLIENT_W_CITY : float
     HOUR_APPR_PROCESS_START : float
-    EXT_SOURCE_1 :  float
-    EXT_SOURCE_2 : float
-    EXT_SOURCE_3 : float
+    AGE_RANGE : float
     CREDIT_TO_ANNUITY_RATIO : float
     CREDIT_TO_GOODS_RATIO : float
     ANNUITY_TO_INCOME_RATIO : float

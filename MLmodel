@@ -14,16 +14,14 @@ flavors:
     serialization_format: cloudpickle
     sklearn_version: 1.2.0
 mlflow_version: 2.3.1
-model_uuid: 5dd1653360dc40cbb3502b1790811cdc
-run_id: 188275be980b4b8c82916f2352755dae
+model_uuid: 0aaefae730284c36ab1c99e60b565700
+run_id: 86ac7fc843804367a1ff5e938a0c2149
 signature:
-  inputs: '[{"name": "AMT_ANNUITY", "type": "float"}, {"name": "DAYS_BIRTH", "type":
-    "float"}, {"name": "DAYS_EMPLOYED", "type": "float"}, {"name": "DAYS_ID_PUBLISH",
-    "type": "float"}, {"name": "REGION_RATING_CLIENT_W_CITY", "type": "float"}, {"name":
-    "HOUR_APPR_PROCESS_START", "type": "float"}, {"name": "EXT_SOURCE_1", "type":
-    "float"}, {"name": "EXT_SOURCE_2", "type": "float"}, {"name": "EXT_SOURCE_3",
-    "type": "float"}, {"name": "CREDIT_TO_ANNUITY_RATIO", "type": "float"}, {"name":
-    "CREDIT_TO_GOODS_RATIO", "type": "float"}, {"name": "ANNUITY_TO_INCOME_RATIO",
+  inputs: '[{"name": "AMT_ANNUITY", "type": "float"}, {"name": "DAYS_EMPLOYED", "type":
+    "float"}, {"name": "DAYS_ID_PUBLISH", "type": "float"}, {"name": "REGION_RATING_CLIENT_W_CITY",
+    "type": "float"}, {"name": "HOUR_APPR_PROCESS_START", "type": "float"}, {"name":
+    "AGE_RANGE", "type": "float"}, {"name": "CREDIT_TO_ANNUITY_RATIO", "type": "float"},
+    {"name": "CREDIT_TO_GOODS_RATIO", "type": "float"}, {"name": "ANNUITY_TO_INCOME_RATIO",
     "type": "float"}, {"name": "INCOME_TO_EMPLOYED_RATIO", "type": "float"}, {"name":
     "INCOME_TO_BIRTH_RATIO", "type": "float"}, {"name": "NAME_EDUCATION_TYPE_CATed",
     "type": "float"}, {"name": "BURO_DAYS_CREDIT_MEAN", "type": "float"}, {"name":
@@ -49,4 +47,4 @@ signature:
     "type": "float"}, {"name": "CC_LIMIT_USE_MEAN", "type": "float"}, {"name": "CC_LATE_PAYMENT_MEAN",
     "type": "float"}, {"name": "CC_DRAWING_LIMIT_RATIO_MEAN", "type": "float"}]'
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
-utc_time_created: '2023-06-07 13:52:10.372844'
+utc_time_created: '2023-06-14 23:12:26.676857'
