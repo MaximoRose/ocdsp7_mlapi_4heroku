@@ -24,7 +24,7 @@ REF_FEATURES = ['AMT_ANNUITY', 'DAYS_EMPLOYED',
                 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_COUNT', 'CC_MONTHS_BALANCE_MEAN', 'CC_AMT_BALANCE_MEAN',
                 'CC_CNT_DRAWINGS_CURRENT_MEAN', 'CC_LIMIT_USE_MEAN', 'CC_LATE_PAYMENT_MEAN', 'CC_DRAWING_LIMIT_RATIO_MEAN']
 
-TOP_FEATURE_QCUTS_FOLDER_PATH = './top_features_quartiles/'
+# TOP_FEATURE_QCUTS_FOLDER_PATH = './top_features_quartiles/'
 
 
 app = FastAPI()
@@ -134,7 +134,7 @@ def get_shap_force(input_parameters : model_input):
     return JSONResponse(content=shap_dictionary)
 
 
-@app.post('/get_radar_values')
+@app.post('/preprocess_data')
 def get_radar(input_parameters : model_input):
 
     # Get parameter data
@@ -147,6 +147,8 @@ def get_radar(input_parameters : model_input):
 
     df_input = pd.DataFrame([input_list], columns=REF_FEATURES)
 
-    dict_top_radar = cf810.get_radar_values(obs=df_input, path_to_qcuts_df=TOP_FEATURE_QCUTS_FOLDER_PATH)
+    preproc_data = cf810.transform_X(X=df_input, loaded_model=xgb_model)
 
-    return JSONResponse(content=dict_top_radar)
+    data_dict = preproc_data.to_dict(orient='records')[0]
+
+    return JSONResponse(content=data_dict)
