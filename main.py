@@ -24,6 +24,7 @@ REF_FEATURES = ['AMT_ANNUITY', 'DAYS_EMPLOYED',
                 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_COUNT', 'CC_MONTHS_BALANCE_MEAN', 'CC_AMT_BALANCE_MEAN',
                 'CC_CNT_DRAWINGS_CURRENT_MEAN', 'CC_LIMIT_USE_MEAN', 'CC_LATE_PAYMENT_MEAN', 'CC_DRAWING_LIMIT_RATIO_MEAN']
 
+TOP_FEATURE_QCUTS_FOLDER_PATH = './top_features_quartiles/'
 
 
 app = FastAPI()
@@ -112,7 +113,7 @@ def solvability_prediction(input_parameters : model_input):
         return 1
 
 
-# TODO : STUDY HOW TO RETURN JSONS RESULTS OF SHAPE FORCES FOR FEATURES
+
 @app.post('/get_shap_force')
 def get_shap_force(input_parameters : model_input):
     input_list = []
@@ -131,3 +132,21 @@ def get_shap_force(input_parameters : model_input):
     shap_dictionary = shap_forces.to_dict(orient='records')[0]
 
     return JSONResponse(content=shap_dictionary)
+
+
+@app.post('/get_radar_values')
+def get_radar(input_parameters : model_input):
+
+    # Get parameter data
+    input_list = []
+    input_data = input_parameters.json()
+    input_dictionary = json.loads(input_data)
+
+    for feature in REF_FEATURES : 
+        input_list.append(input_dictionary[feature])
+
+    df_input = pd.DataFrame([input_list], columns=REF_FEATURES)
+
+    dict_top_radar = cf810.get_radar_values(obs=df_input, path_to_qcuts_df=TOP_FEATURE_QCUTS_FOLDER_PATH)
+
+    return JSONResponse(content=dict_top_radar)
