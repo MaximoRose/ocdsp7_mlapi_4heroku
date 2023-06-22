@@ -123,9 +123,9 @@ def get_predict_proba(input_parameters : model_input):
     for feature in REF_FEATURES : 
         input_list.append(input_dictionary[feature])
     
-    prediction_proba = xgb_model.predict_proba([input_list])
+    # prediction_proba = xgb_model.predict_proba([input_list])
     
-    return prediction_proba
+    return input_list
 
 
 
