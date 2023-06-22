@@ -111,6 +111,21 @@ def solvability_prediction(input_parameters : model_input):
         return 0  
     else:
         return 1
+    
+
+@app.post('/predict_proba')
+def solvability_prediction(input_parameters : model_input):
+    input_list = []
+
+    input_data = input_parameters.json()
+    input_dictionary = json.loads(input_data)
+
+    for feature in REF_FEATURES : 
+        input_list.append(input_dictionary[feature])
+    
+    prediction_proba = xgb_model.predict_proba([input_list])
+    
+    return JSONResponse(content=prediction_proba)
 
 
 
