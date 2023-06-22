@@ -125,7 +125,7 @@ def solvability_prediction(input_parameters : model_input):
     
     prediction_proba = xgb_model.predict_proba([input_list])
     
-    return JSONResponse(content=prediction_proba)
+    return prediction_proba[0, 1]
 
 
 
