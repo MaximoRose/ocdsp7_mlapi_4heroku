@@ -114,7 +114,7 @@ def solvability_prediction(input_parameters : model_input):
     
 
 @app.post('/predict_proba')
-def solvability_prediction(input_parameters : model_input):
+def get_predict_proba(input_parameters : model_input):
     input_list = []
 
     input_data = input_parameters.json()
