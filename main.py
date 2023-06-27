@@ -7,6 +7,8 @@ import json
 import complementary_functions as cf810
 import pandas as pd
 
+# Liste des features de référence du modèle
+# CSI_ : A l'avenir ces éléments pourraient directement être récupérés depuis le fichier MLModel
 REF_FEATURES = ['AMT_ANNUITY', 'DAYS_EMPLOYED', 
                 'DAYS_ID_PUBLISH', 'REGION_RATING_CLIENT_W_CITY', 'HOUR_APPR_PROCESS_START',
                 'AGE_RANGE',
@@ -23,8 +25,6 @@ REF_FEATURES = ['AMT_ANNUITY', 'DAYS_EMPLOYED',
                 'INSTAL_PAYMENT_PERC_MEAN', 'INSTAL_PAYMENT_DIFF_MEAN', 'INSTAL_AMT_PAYMENT_MEAN',
                 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_COUNT', 'CC_MONTHS_BALANCE_MEAN', 'CC_AMT_BALANCE_MEAN',
                 'CC_CNT_DRAWINGS_CURRENT_MEAN', 'CC_LIMIT_USE_MEAN', 'CC_LATE_PAYMENT_MEAN', 'CC_DRAWING_LIMIT_RATIO_MEAN']
-
-# TOP_FEATURE_QCUTS_FOLDER_PATH = './top_features_quartiles/'
 
 
 app = FastAPI()
@@ -95,8 +95,12 @@ class model_input(BaseModel):
 xgb_model = pickle.load(open('model.pkl','rb'))
 
 
+
 @app.post('/solvability_prediction')
 def solvability_prediction(input_parameters : model_input):
+    """
+    Retourne le résultat de la prédiction du modèle pour un dossier
+    """
     input_list = []
 
     input_data = input_parameters.json()
@@ -115,6 +119,9 @@ def solvability_prediction(input_parameters : model_input):
 
 @app.post('/predict_proba')
 def get_predict_proba(input_parameters : model_input):
+    """
+    Retourne le résultats du predict_proba du modèle pour un dossier
+    """
     input_list = []
 
     input_data = input_parameters.json()
@@ -131,6 +138,9 @@ def get_predict_proba(input_parameters : model_input):
 
 @app.post('/get_shap_force')
 def get_shap_force(input_parameters : model_input):
+    """
+    Retourne les coefficients de SHAP associé à une prédiction spécifique
+    """
     input_list = []
 
     input_data = input_parameters.json()
@@ -151,7 +161,9 @@ def get_shap_force(input_parameters : model_input):
 
 @app.post('/preprocess_data')
 def get_radar(input_parameters : model_input):
-
+    """
+    Réalise le pipeline du model, sauf la prédiction par l'estimateur (scaling + imputing)
+    """
     # Get parameter data
     input_list = []
     input_data = input_parameters.json()
